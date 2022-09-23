@@ -12,3 +12,15 @@
   <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
   <router-outlet *ngIf="!isIframe"></router-outlet>
 </div>
+
+<!-- The Modal -->
+<div *ngIf="isModal" id="myModal" class="modal">
+  <div  class="container-popup" >
+    <span (click)="close()" class="close">&times;</span>
+    <div style="margin-top: 33px;">
+      <button mat-raised-button *ngIf="!loginDisplay" (click)="login()">Kết nối wifi</button>
+      <!-- <button mat-raised-button *ngIf="loginDisplay" (click)="logout()">Logout</button> -->
+    </div>
+  </div>
+  <div id="caption"></div>
+</div>

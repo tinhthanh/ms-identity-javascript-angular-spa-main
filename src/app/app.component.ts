@@ -14,7 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
-
+  isModal = true;
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
@@ -72,7 +72,9 @@ export class AppComponent implements OnInit, OnDestroy {
       });
     }
   }
-
+  close() {
+    this.isModal = false;
+  }
   ngOnDestroy(): void {
     this._destroying$.next(undefined);
     this._destroying$.complete();
