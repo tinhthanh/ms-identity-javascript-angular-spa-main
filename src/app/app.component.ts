@@ -14,7 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
-  isModal = true;
+  isModal = false;
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
@@ -36,6 +36,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+    if(!this.loginDisplay) {
+    this.login();
+    } else {
+      window.location.href =  window.location.href = 'http://192.168.1.1//login?dst=https://google.com&username=user1&password=user1';
+    }
   }
 
   login() {

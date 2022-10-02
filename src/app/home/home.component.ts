@@ -20,7 +20,8 @@ export class HomeComponent implements OnInit {
       )
       .subscribe((result: EventMessage) => {
         console.log(result);
-        
+        window.location.href = 'http://192.168.1.1//login?dst=https://google.com&username=user1&password=user1';
+
         const payload = result.payload as AuthenticationResult;
         this.authService.instance.setActiveAccount(payload.account);
       });

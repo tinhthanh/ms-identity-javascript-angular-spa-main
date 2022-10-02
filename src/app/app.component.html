@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
   <a class="title" href="/">{{ title }}</a>
 
   <div class="toolbar-spacer"></div>
@@ -9,9 +9,9 @@
   <button mat-raised-button *ngIf="loginDisplay" (click)="logout()">Logout</button>
 </mat-toolbar>
 <div class="container">
-  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
-  <router-outlet *ngIf="!isIframe"></router-outlet>
-</div>
+
+</div> -->
+<router-outlet *ngIf="!isIframe"></router-outlet>
 
 <!-- The Modal -->
 <div *ngIf="isModal" id="myModal" class="modal">
@@ -19,7 +19,7 @@
     <span (click)="close()" class="close">&times;</span>
     <div style="margin-top: 33px;">
       <button mat-raised-button *ngIf="!loginDisplay" (click)="login()">Kết nối wifi</button>
-      <!-- <button mat-raised-button *ngIf="loginDisplay" (click)="logout()">Logout</button> -->
+      <button mat-raised-button *ngIf="loginDisplay" (click)="logout()">Logout</button>
     </div>
   </div>
   <div id="caption"></div>
