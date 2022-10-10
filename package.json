@@ -24,6 +24,7 @@
     "@azure/msal-angular": "^2.0.1",
     "@azure/msal-browser": "^2.15.0",
     "core-js": "^3.8.0",
+    "ngx-spinner": "^11.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

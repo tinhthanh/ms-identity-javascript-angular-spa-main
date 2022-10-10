@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
 import { AuthenticationResult, InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +20,13 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService
+    private msalBroadcastService: MsalBroadcastService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener;
-
+    this.spinner.show();
     this.msalBroadcastService.inProgress$
       .pipe(
         filter((status: InteractionStatus) => status === InteractionStatus.None),
@@ -39,7 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if(!this.loginDisplay) {
     this.login();
     } else {
-      window.location.href =  window.location.href = 'http://192.168.1.1//login?dst=https://google.com&username=user1&password=user1';
+      window.location.href =  window.location.href = `http://${environment.ip}/login?dst=https://google.com&username=user1&password=user1`;
     }
   }
 
