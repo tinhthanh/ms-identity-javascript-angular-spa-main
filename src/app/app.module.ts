@@ -26,8 +26,8 @@ export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       clientId: 'ec01dd8b-f7f6-4234-a3dc-22e04f184139',
-      authority: 'https://login.microsoftonline.com/125dc7b7-c709-4cb3-b084-eb2c0c21381a',
-      redirectUri: 'https://assets.vetgo.vn/mikrotikvn/'
+      authority: 'https://login.microsoftonline.com/common',
+      redirectUri: 'http://localhost:4200/'
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,
