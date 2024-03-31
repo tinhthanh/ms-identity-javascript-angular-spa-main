@@ -22,26 +22,25 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
   console.log(message);
 }
 
-export function MSALInstanceFactory(): IPublicClientApplication {
-  return new PublicClientApplication({
-    auth: {
-      clientId: 'ec01dd8b-f7f6-4234-a3dc-22e04f184139',
-      authority: 'https://login.microsoftonline.com/common',
-      redirectUri: 'http://localhost:4200/'
-    },
-    cache: {
-      cacheLocation: BrowserCacheLocation.LocalStorage,
-      storeAuthStateInCookie: isIE, // set to true for IE 11
-    },
-    system: {
-      loggerOptions: {
-        loggerCallback,
-        logLevel: LogLevel.Info,
-        piiLoggingEnabled: false
+  export function MSALInstanceFactory(): IPublicClientApplication {
+    return new PublicClientApplication({
+      auth: {
+        clientId: '88a6db64-2f02-4ccb-8803-c2e978ec7bfb',
+        authority: 'https://login.microsoftonline.com/def15942-3533-4bcb-b9c2-a7d4a0bd0c35'
+      },
+      cache: {
+        cacheLocation: BrowserCacheLocation.LocalStorage,
+        storeAuthStateInCookie: isIE, // set to true for IE 11
+      },
+      system: {
+        loggerOptions: {
+          loggerCallback,
+          logLevel: LogLevel.Info,
+          piiLoggingEnabled: false
+        }
       }
-    }
-  });
-}
+    });
+  }
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
@@ -52,6 +51,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     protectedResourceMap
   };
 }
+
 
 export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
